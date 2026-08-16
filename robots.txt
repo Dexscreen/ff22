@@ -1,0 +1,10 @@
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: *
+Allow: /
+
+Sitemap: https://fixedfloat.biz/sitemap.xml
