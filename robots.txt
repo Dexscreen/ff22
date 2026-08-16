@@ -1,0 +1,16 @@
+User-agent: Bingbot
+Allow: /
+Disallow: /data/
+Disallow: /js/
+Disallow: /css/
+
+User-agent: Googlebot
+Disallow: /
+
+User-agent: *
+Allow: /
+Disallow: /data/
+Disallow: /js/
+Disallow: /css/
+
+Sitemap: https://fixedfloaticfd.com/sitemap.xml
