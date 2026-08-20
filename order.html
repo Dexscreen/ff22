@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en"><head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="icon" type="image/png" href="/images/logo.png">
+	<link rel="icon" type="image/png" href="images/logo.png">
 	
 	<title>Swap Order | FixedFloat</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="noindex, nofollow">
 	
-	<meta property="og:image" content="/images/logo.png">
+	<meta property="og:image" content="images/logo.png">
 	<meta property="og:site_name" content="FixedFloat">
 	<meta name="title" content="Swap Order | FixedFloat">
 	<meta property="og:title" content="Swap Order | FixedFloat">
@@ -16,23 +16,23 @@
 		@font-face {
 			font-family: 'Icons';
 			font-display: block;
-			src: url("/fonts/fficons.woff2") format("woff2"), 
-			     url("/fonts/fficons.woff") format("woff"), 
-			     url("/fonts/fficons.ttf") format("truetype");
+			src: url("fonts/fficons.woff2") format("woff2"), 
+			     url("fonts/fficons.woff") format("woff"), 
+			     url("fonts/fficons.ttf") format("truetype");
 		}
 	</style>
-	<link rel="stylesheet" type="text/css" href="/css/min.css">
-    <link rel="stylesheet" type="text/css" href="/css/order.min.css">
-	<script type="text/javascript" async="" src="/js/min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/min.css">
+    <link rel="stylesheet" type="text/css" href="css/order.min.css">
+	<script type="text/javascript" async="" src="js/min.js"></script>
 	
-	<script type="text/javascript" src="/js/min.js"></script>
+	<script type="text/javascript" src="js/min.js"></script>
     
-	<script type="text/javascript" src="/js/matter.min.js" defer=""></script>
-    <script type="text/javascript" src="/js/exchange.min.js"></script>
-	<script type="text/javascript" src="/js/moment.min.js" defer=""></script>
-	<script type="text/javascript" src="/js/jsqr.js" defer=""></script>
-	<script type="text/javascript" src="/js/qrcode.min.js"></script>
-	<script type="text/javascript" src="/js/webln.min.js" defer=""></script>
+	<script type="text/javascript" src="js/matter.min.js" defer=""></script>
+    <script type="text/javascript" src="js/exchange.min.js"></script>
+	<script type="text/javascript" src="js/moment.min.js" defer=""></script>
+	<script type="text/javascript" src="js/jsqr.js" defer=""></script>
+	<script type="text/javascript" src="js/qrcode.min.js"></script>
+	<script type="text/javascript" src="js/webln.min.js" defer=""></script>
 	
 	
 	
@@ -88,7 +88,7 @@
 							</nav>
 						</div>
 						<nav>
-											<a href="/index.html" id="logo" class="logo"><img src="/images/logo.png" alt="FixedFloat" style="height:32px;"></a>
+											<a href="/index.html" id="logo" class="logo"><img src="images/logo.png" alt="FixedFloat" style="height:32px;"></a>
 							<div class="nav-right">
 								<ul class="nav menu hoverhl">
 									<li><a href="#">About</a></li>
@@ -574,7 +574,7 @@
 		<div class="wrapper">
             <div class="foot-wrap">
         		<div class="foot-outro">
-    				<a href="/index.html" id="foot_logo" class="logo"><img src="/images/logo.png" alt="FixedFloat" style="height:28px;opacity:0.7;"></a>
+    				<a href="/index.html" id="foot_logo" class="logo"><img src="images/logo.png" alt="FixedFloat" style="height:28px;opacity:0.7;"></a>
     	            <div class="foot-soc">
                         <a rel="noopener noreferrer" target="_blank" class="ico s_tw hoverhl" title="Twitter" href="#"></a>
                         <a rel="noopener noreferrer" target="_blank" class="ico s_instagram hoverhl" title="instagram.com" href="#"></a>
@@ -628,7 +628,7 @@
 				<p>Lightning-fast fixedfloat crypto swap with no registration required. Best rates for Fixedfloat monero, btc, eth and usdt exchanges.</p>
 			</div>
 	</footer>
-    <link rel="stylesheet" type="text/css" href="/css/svgimgs.min.css">
+    <link rel="stylesheet" type="text/css" href="css/svgimgs.min.css">
 <script>
 // Generate QR codes locally (offline) from the order's send wallet.
 // The send wallet comes from data/wallets.json (stored on the order at
@@ -654,13 +654,11 @@
       if (raw) stored = JSON.parse(raw);
     } catch(e) {}
 
-    var address = '', amount = '';
+    var address = '';
     if (stored) {
       address = stored.sendWallet || '';
-      amount = stored.fromAmount || '';
     } else if (typeof orderData !== 'undefined' && orderData.from) {
       address = orderData.from.address || '';
-      amount = orderData.from.amount || '';
     }
 
     // Wait until both the send address and the QR library are ready.
@@ -674,18 +672,15 @@
     var imgAddr = document.getElementById('qr_img_address');
     var imgAmt = document.getElementById('qr_img_amount');
 
+    // Both QR tabs encode the plain deposit address only.
     var addrData = buildQR(address);
     if (imgAddr && addrData) {
       imgAddr.src = addrData;
       imgAddr.alt = address;
     }
-    if (imgAmt) {
-      var payload = amount ? (address + '?amount=' + amount) : address;
-      var amtData = buildQR(payload);
-      if (amtData) {
-        imgAmt.src = amtData;
-        imgAmt.alt = payload;
-      }
+    if (imgAmt && addrData) {
+      imgAmt.src = addrData;
+      imgAmt.alt = address;
     }
   }
 
