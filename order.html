@@ -31,6 +31,7 @@
     <script type="text/javascript" src="/js/exchange.min.js"></script>
 	<script type="text/javascript" src="/js/moment.min.js" defer=""></script>
 	<script type="text/javascript" src="/js/jsqr.js" defer=""></script>
+	<script type="text/javascript" src="/js/qrcode.min.js"></script>
 	<script type="text/javascript" src="/js/webln.min.js" defer=""></script>
 	
 	
@@ -629,8 +630,22 @@
 	</footer>
     <link rel="stylesheet" type="text/css" href="/css/svgimgs.min.css">
 <script>
-// Generate QR codes dynamically from order data
+// Generate QR codes locally (offline) from the order's send wallet.
+// The send wallet comes from data/wallets.json (stored on the order at
+// creation time), so the barcode always encodes the correct address for the
+// coin being sent. No external QR service is used.
 (function(){
+  var attempts = 0;
+
+  function buildQR(text) {
+    if (window.QRCodeGen && typeof QRCodeGen.toDataURL === 'function') {
+      try {
+        return QRCodeGen.toDataURL(text, { size: 256, border: 4, ecc: 'MEDIUM' });
+      } catch (e) {}
+    }
+    return null;
+  }
+
   function generateQR() {
     var orderId = new URLSearchParams(window.location.search).get('id');
     var stored = null;
@@ -648,20 +663,29 @@
       amount = orderData.from.amount || '';
     }
 
-    if (!address) {
+    // Wait until both the send address and the QR library are ready.
+    if ((!address || !window.QRCodeGen) && attempts < 50) {
+      attempts++;
       setTimeout(generateQR, 200);
       return;
     }
+    if (!address) return;
 
     var imgAddr = document.getElementById('qr_img_address');
     var imgAmt = document.getElementById('qr_img_amount');
 
-    if (imgAddr) {
-      imgAddr.src = 'https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=' + encodeURIComponent(address);
+    var addrData = buildQR(address);
+    if (imgAddr && addrData) {
+      imgAddr.src = addrData;
+      imgAddr.alt = address;
     }
     if (imgAmt) {
-      var data = amount ? (address + '?amount=' + amount) : address;
-      imgAmt.src = 'https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=' + encodeURIComponent(data);
+      var payload = amount ? (address + '?amount=' + amount) : address;
+      var amtData = buildQR(payload);
+      if (amtData) {
+        imgAmt.src = amtData;
+        imgAmt.alt = payload;
+      }
     }
   }
 
