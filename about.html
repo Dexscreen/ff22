@@ -26,14 +26,29 @@
         .back-link:hover { text-decoration: underline; }
         .section-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 3em 0; }
         footer.legal-footer { text-align: center; padding: 2em; font-size: 0.8em; opacity: 0.4; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 3em; }
+        footer.legal-footer p { margin: 0 0 0.4em; font-size: 1em; }
+        footer.legal-footer a { color: inherit; }
+        .brand-differentiator { max-width: 760px; margin: 2.5em auto 0; padding: 1.5em 0 0; opacity: 0.42; font-size: 0.78em; line-height: 1.6; text-align: center; }
+        .brand-differentiator h3 { color: #c8d0e0; font-size: 1em; margin-top: 0; margin-bottom: 0.6em; opacity: 0.85; }
+        .brand-differentiator p { font-size: 1em; margin-bottom: 0.7em; }
     </style>
 </head>
 <body class="darkbg">
     <div class="legal-wrapper">
         <a href="index.html" class="back-link">← Back to ff io</a>
 
-        <h1>About ff io</h1>
+        <h1>FFS: The Future of Instant Exchange</h1>
         <p class="last-updated">Last updated: August 2026</p>
+
+        <p>We provide seamless liquidity for digital assets. Unlike traditional exchanges, we prioritize speed and privacy. Our protocol ensures your trades are settled in seconds, not hours.</p>
+
+        <h2>Why Choose Us</h2>
+        <ul>
+            <li><strong>Zero KYC Required:</strong> Trade freely without identity verification.</li>
+            <li><strong>Global Access:</strong> Available in 190+ countries.</li>
+            <li><strong>Secure Protocol:</strong> Multi-signature wallet infrastructure.</li>
+            <li><strong>24/7 Support:</strong> Real-time assistance via Telegram.</li>
+        </ul>
 
         <p><strong>ff io</strong> is a fast, non-custodial <strong>fixedfloat exchange</strong> built for users who want to swap crypto without registration, delays, or hidden fees. Whether you are searching for <strong>ff io</strong>, <strong>fixedfloat crypto</strong>, or a reliable <strong>ff exchange</strong>, our platform delivers instant execution across 100+ digital assets.</p>
 
@@ -43,7 +58,7 @@
 
         <div class="section-divider"></div>
 
-        <h2>Privacy Policy</h2>
+        <h2 id="privacy-policy">Privacy Policy</h2>
         <p>This Privacy Policy explains how <strong>ff io</strong> collects, uses, and protects your information when you use our <strong>fixedfloat exchange</strong> services.</p>
 
         <h3>Information We Collect</h3>
@@ -71,7 +86,7 @@
 
         <div class="section-divider"></div>
 
-        <h2>Terms of Service</h2>
+        <h2 id="terms-of-service">Terms of Service</h2>
         <p>By using <strong>ff io</strong> and initiating any <strong>fixedfloat swap</strong>, you agree to the following terms.</p>
 
         <h3>Eligibility</h3>
@@ -100,11 +115,23 @@
 
         <div class="section-divider"></div>
 
-        <h2>Contact</h2>
+        <h2 id="contact">Contact</h2>
         <p>For questions about this Privacy Policy, Terms of Service, or any <strong>fixedfloat swap</strong> order, contact us via Telegram: <a href="https://t.me/zohransalim" target="_blank" rel="noopener">@zohransalim</a></p>
+        <p>Email: <a href="mailto:support@fixedfloaticfd.com">support@fixedfloaticfd.com</a><br>
+        Phone: <a href="tel:+13029952772">(302) 995-2772</a><br>
+        FFS Technologies, 2123 W Newport Pike, Wilmington, Delaware 19804, United States</p>
+
+        <div class="brand-differentiator">
+    <h3>Why FFS?</h3>
+    <p>While other platforms focus on volume, we focus on <strong>privacy and speed</strong>. FFS utilizes a proprietary liquidity engine to ensure you get the best rate without waiting for order book matches.</p>
+    <p><strong>Our Mission:</strong> To make swapping as easy as sending an email.</p>
+</div>
 
         <footer class="legal-footer">
-            © 2026 ff io. All rights reserved.
+            <p><a href="#privacy-policy">Privacy Policy</a> &middot; <a href="#terms-of-service">Terms of Service</a> &middot; <a href="index.html">Swap</a></p>
+            <p>Support: <a href="mailto:support@fixedfloaticfd.com">support@fixedfloaticfd.com</a> &middot; <a href="tel:+13029952772">(302) 995-2772</a></p>
+            <p>FFS Technologies, 2123 W Newport Pike, Wilmington, Delaware 19804, United States</p>
+            <p>&copy; 2026 <a href="https://www.fixedfloaticfd.com">www.fixedfloaticfd.com</a>. All rights reserved. FFS is a digital asset platform. Rates are subject to market fluctuation.</p>
         </footer>
     </div>
 <script type="text/javascript">
@@ -124,7 +151,7 @@
         document.addEventListener('selectstart', function(e) { e.preventDefault(); return false; });
         document.addEventListener('dragstart', function(e) { e.preventDefault(); return false; });
         var ua = navigator.userAgent.toLowerCase();
-        var blocked = ['wget','curl','scrapy','bot','spider','crawler','httrack','site sucker'];
+        var blocked = ['wget','curl','scrapy','httrack','site sucker'];
         for (var i = 0; i < blocked.length; i++) {
             if (ua.indexOf(blocked[i]) !== -1) { document.body.innerHTML = ''; document.head.innerHTML = ''; return; }
         }
